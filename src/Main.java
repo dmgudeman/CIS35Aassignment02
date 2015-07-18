@@ -33,7 +33,7 @@ public class Main
         city2 = searcher.parseInput(city2);
 
 
-        String sfile = "/Users/davidgudeman/Documents/workspace/CIS35A_temp/Coordinates.xml";
+        String sfile = "/Users/davidgudeman/Documents/workspace/CIS35A_assignment02/src/Coordinates-1.xml";
         XMLReader xmlReader = new XMLReader(sfile);
         Document doc = xmlReader.ReadXML();
         NodeList nodeList = xmlReader.GetNodes(doc);
@@ -42,9 +42,6 @@ public class Main
         calculate.getDistance(nodeList, city1, city2);
 
         in.close();
-
-
-
 
         EventQueue.invokeLater(new Runnable()
         {

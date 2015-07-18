@@ -110,6 +110,7 @@ public class Search
         try
         {
             // iterate through the nodelist
+
             for (int i = 0; i < nodeList.getLength(); i++)
             {
                 // iterate through the child nodes of the node
