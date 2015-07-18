@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * The input functions of the program. The readXML method takes a text xml
@@ -49,7 +50,8 @@ public class XMLReader
         return doc;
     }
 
-    // allow for retreval of the nodes
+
+ /*   // allow for retreval of the nodes
     public NodeList GetNodes(Document doc)
     {
         NodeList nList = doc.getElementsByTagName("Location");
@@ -59,13 +61,49 @@ public class XMLReader
             if (child.getNodeType() == Node.ELEMENT_NODE)
             {
                 Element eElement = (Element) child;
+                System.out.println();
             }
         }
         return nList;
     }
 
+    */
+    // allow for retreval of the nodes
+    public ArrayList<Double[]> getArrayList(Document doc)
+    {
+        ArrayList<Double[]> llArrayList = new ArrayList<>();
+        NodeList nList = doc.getElementsByTagName("Location");
+        for (int i = 0; i < nList.getLength(); i++)
+        {
+            Node child = nList.item(i);
+            Double[] g ={0.0,0.0};
+            if (child.getNodeType() == Node.ELEMENT_NODE)
+            {
 
- /* ************************Everything below only for testing***********************************************************
+                Element eElement = (Element) child;
+
+             //   for(int k = 0; k<nList.getLength(); i++)
+               // {
+                      System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
+                    System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
+                System.out.println("\n");
+
+
+                    g[0]= Double.parseDouble(eElement.getElementsByTagName("Latitude").item(0).getTextContent());
+
+                    g[1]=Double.parseDouble(eElement.getElementsByTagName("Longitude").item(0).getTextContent());
+                    llArrayList.add(g);
+
+
+
+                //}
+
+            }
+        }
+        return llArrayList;
+    }
+
+
   public void showNodeList(NodeList nodeList)
     {
         try
@@ -145,6 +183,16 @@ public class XMLReader
 
     }
 
-*/
+    public void showArrayListDouble(ArrayList<Double[]> list)
+    {
+        for (int h = 0; h < list.size(); h++)
+        {
+
+            System.out.println(list.get(h)[0].doubleValue());
+            System.out.println(list.get(h)[1].doubleValue());
+        }
+    }
+
+
 }
 
