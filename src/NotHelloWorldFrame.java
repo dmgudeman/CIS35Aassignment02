@@ -15,7 +15,6 @@ class NotHelloWorldFrame extends JFrame
     public NotHelloWorldFrame(ArrayList<Double[]> list)
     {
         add(new NotHelloWorldComponent(list));
-        System.out.println("hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
         pack();
     }
 }

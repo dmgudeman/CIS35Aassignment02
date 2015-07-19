@@ -72,6 +72,17 @@ public class XMLReader
     public ArrayList<Double[]> getArrayList(Document doc)
     {
         ArrayList<Double[]> llArrayList = new ArrayList<>();
+        ArrayList<Double[]> testArrayList = new ArrayList<>();
+        Double[] ar1 = {10.0, 70.0};
+        Double[] ar2 = {10.0, 10.0};
+        Double[] ar3 = {70.0, 70.0};
+        Double[] ar4 = {30.0, 30.0};
+
+        testArrayList.add(ar1);
+        testArrayList.add(ar2);
+        testArrayList.add(ar3);
+        testArrayList.add(ar4);
+
         NodeList nList = doc.getElementsByTagName("Location");
         for (int i = 0; i < nList.getLength(); i++)
         {
@@ -89,9 +100,9 @@ public class XMLReader
                // System.out.println("\n");
 
                     double augmentedLong = Double.parseDouble(eElement.getElementsByTagName("Longitude").item(0).getTextContent()) + 180;
-                    augmentedLong = (double) Math.round((augmentedLong-73)*100);
+                    augmentedLong = (double) ((augmentedLong-73)*100);
                     double augmentedLat = Double.parseDouble(eElement.getElementsByTagName("Latitude").item(0).getTextContent());
-                    augmentedLat = (double) Math.round(10*(augmentedLat)-30);
+                    augmentedLat = (double) (100*(augmentedLat)-30);
                     g[1]= augmentedLong;
                     g[0] = augmentedLat;
                     llArrayList.add(g);
@@ -102,7 +113,7 @@ public class XMLReader
 
             }
         }
-        return llArrayList;
+        return testArrayList;
     }
 
 
