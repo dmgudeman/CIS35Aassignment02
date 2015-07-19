@@ -49,7 +49,7 @@ public class Main
         {
             public void run()
             {
-                JFrame frame = new NotHelloWorldFrame();
+                JFrame frame = new NotHelloWorldFrame(aList);
                 frame.setTitle("Not Hello World");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);

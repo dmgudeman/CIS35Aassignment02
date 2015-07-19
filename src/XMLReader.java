@@ -84,14 +84,16 @@ public class XMLReader
 
              //   for(int k = 0; k<nList.getLength(); i++)
                // {
-                      System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
-                    System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
-                System.out.println("\n");
+                   //   System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
+                    //System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
+               // System.out.println("\n");
 
-
-                    g[0]= Double.parseDouble(eElement.getElementsByTagName("Latitude").item(0).getTextContent());
-
-                    g[1]=Double.parseDouble(eElement.getElementsByTagName("Longitude").item(0).getTextContent());
+                    double augmentedLong = Double.parseDouble(eElement.getElementsByTagName("Longitude").item(0).getTextContent()) + 180;
+                    augmentedLong = (double) Math.round((augmentedLong-73)*100);
+                    double augmentedLat = Double.parseDouble(eElement.getElementsByTagName("Latitude").item(0).getTextContent());
+                    augmentedLat = (double) Math.round(10*(augmentedLat)-30);
+                    g[1]= augmentedLong;
+                    g[0] = augmentedLat;
                     llArrayList.add(g);
 
 
