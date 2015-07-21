@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 class MapFrame extends JFrame
 {
-  //  private static final int DEFAULT_WIDTH = 800;
-  //  private static final int DEFAULT_HEIGHT = 400;
 
     public MapFrame(ArrayList<Double[]> list)
     {

@@ -28,7 +28,7 @@ public class Main
             public void run()
             {
                 JFrame frame = new MapFrame(aList);
-                frame.setTitle("Not Hello World");
+                frame.setTitle("Map");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
 
