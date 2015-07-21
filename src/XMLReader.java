@@ -39,7 +39,7 @@ public class XMLReader
     }
 
     // takes in xml file parses it into nodes
-    public Document ReadXML() throws ParserConfigurationException, IOException, SAXException
+    public Document readXML() throws ParserConfigurationException, IOException, SAXException
     {
         try
         {
@@ -78,16 +78,7 @@ public class XMLReader
     {
         ArrayList<Double[]> llArrayList = new ArrayList<>();
         ArrayList<Double[]> testArrayList = new ArrayList<>();
-    /*    Double[] ar1 = {10.0, 10.0};
-        Double[] ar2 = {10.0, 70.0};
-        Double[] ar3 = {70.0, 70.0};
-        Double[] ar4 = {70.0, 10.0};
 
-        testArrayList.add(ar1);
-        testArrayList.add(ar2);
-        testArrayList.add(ar3);
-        testArrayList.add(ar4);
-*/
 
         for (int i = 0; i < nodeList.getLength(); i++)
         {
@@ -98,10 +89,6 @@ public class XMLReader
             {
 
                 Element eElement = (Element) child;
-                System.out.println("INDEX i = " + i);
-                System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
-                System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
-                System.out.println("\n");
 
                 double dLong = Double.parseDouble(eElement.getElementsByTagName("Longitude").item(0).getTextContent());
                 double dLat = Double.parseDouble(eElement.getElementsByTagName("Latitude").item(0).getTextContent());
@@ -116,8 +103,9 @@ public class XMLReader
         }
         return llArrayList;
     }
+}
 
-
+/*
     public void showNodeList(NodeList nodeList)
     {
         try
@@ -211,4 +199,4 @@ public class XMLReader
 
 
 }
-
+*/

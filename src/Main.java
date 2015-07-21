@@ -17,37 +17,11 @@ public class Main
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException
     {
 
-    /*    Search searcher = new Search();
-        String city1, city2;
-
-        Scanner in = new Scanner(System.in);
-
-        System.out.println("");
-        System.out.println("Enter first City in the format:   City/ST");
-        city1 = in.nextLine();
-        city1 = searcher.parseInput(city1);
-
-        System.out.println("");
-        System.out.println("Enter second City in the format:   City/ST");
-        city2 = in.nextLine();
-        city2 = searcher.parseInput(city2);
-*/
-
         String sfile = "/Users/davidgudeman/Documents/workspace/CIS35A_assignment02/src/Coordinates-1.xml";
         XMLReader xmlReader = new XMLReader(sfile);
-        Document doc = xmlReader.ReadXML();
+        Document doc = xmlReader.readXML();
         NodeList nodeList = xmlReader.getNodes(doc);
-     //   xmlReader.showNodeList(nodeList);
-        ArrayList<Double[]> aList= xmlReader.getArrayList(nodeList);
-
-      //  xmlReader.showArrayListDouble(aList);
-
-        System.out.println("hoooooooooooooooooooooooooooPoints Left         ooo" + aList.size());
-
-        Calculate calculate = new Calculate();
-       // calculate.getDistance(nodeList, city1, city2);
-
-     //   in.close();
+        ArrayList<Double[]> aList = xmlReader.getArrayList(nodeList);
 
         EventQueue.invokeLater(new Runnable()
         {
@@ -55,7 +29,7 @@ public class Main
             {
                 JFrame frame = new MapFrame(aList);
                 frame.setTitle("Not Hello World");
-               frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
 
 
