@@ -8,7 +8,6 @@ import java.awt.*;
 import java.io.IOException;
 import java.lang.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Created by davidgudeman on 7/17/15.
@@ -54,7 +53,7 @@ public class Main
         {
             public void run()
             {
-                JFrame frame = new NotHelloWorldFrame(aList);
+                JFrame frame = new MapFrame(aList);
                 frame.setTitle("Not Hello World");
                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
