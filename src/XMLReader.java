@@ -4,6 +4,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 /**
  * The input functions of the program. The readXML method takes a text xml
  * file and returns a document of nodes.
- *
+ * <p>
  * The GetNodes method makes the nodes available
  * Created by davidgudeman on 7/9/15.
  */
@@ -31,6 +32,10 @@ public class XMLReader
     public XMLReader(String sfile) throws ParserConfigurationException, IOException, SAXException
     {
         this.sfile = sfile;
+    }
+
+    public XMLReader()
+    {
     }
 
     // takes in xml file parses it into nodes
@@ -51,8 +56,8 @@ public class XMLReader
     }
 
 
- /*   // allow for retreval of the nodes
-    public NodeList GetNodes(Document doc)
+    // allow for retreval of the nodes
+    public NodeList getNodes(Document doc)
     {
         NodeList nList = doc.getElementsByTagName("Location");
         for (int i = 0; i < nList.getLength(); i++)
@@ -67,57 +72,53 @@ public class XMLReader
         return nList;
     }
 
-    */
+
     // allow for retreval of the nodes
-    public ArrayList<Double[]> getArrayList(Document doc)
+    public ArrayList<Double[]> getArrayList(NodeList nodeList)
     {
         ArrayList<Double[]> llArrayList = new ArrayList<>();
         ArrayList<Double[]> testArrayList = new ArrayList<>();
-        Double[] ar1 = {10.0, 70.0};
-        Double[] ar2 = {10.0, 10.0};
+    /*    Double[] ar1 = {10.0, 10.0};
+        Double[] ar2 = {10.0, 70.0};
         Double[] ar3 = {70.0, 70.0};
-        Double[] ar4 = {30.0, 30.0};
+        Double[] ar4 = {70.0, 10.0};
 
         testArrayList.add(ar1);
         testArrayList.add(ar2);
         testArrayList.add(ar3);
         testArrayList.add(ar4);
+*/
 
-        NodeList nList = doc.getElementsByTagName("Location");
-        for (int i = 0; i < nList.getLength(); i++)
+        for (int i = 0; i < nodeList.getLength(); i++)
         {
-            Node child = nList.item(i);
-            Double[] g ={0.0,0.0};
+
+            Node child = nodeList.item(i);
+            Double[] g = {0.0, 0.0, 0.0, 0.0};
             if (child.getNodeType() == Node.ELEMENT_NODE)
             {
 
                 Element eElement = (Element) child;
+                System.out.println("INDEX i = " + i);
+                System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
+                System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
+                System.out.println("\n");
 
-             //   for(int k = 0; k<nList.getLength(); i++)
-               // {
-                   //   System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
-                    //System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
-               // System.out.println("\n");
+                double dLong = Double.parseDouble(eElement.getElementsByTagName("Longitude").item(0).getTextContent());
+                double dLat = Double.parseDouble(eElement.getElementsByTagName("Latitude").item(0).getTextContent());
 
-                    double augmentedLong = Double.parseDouble(eElement.getElementsByTagName("Longitude").item(0).getTextContent()) + 180;
-                    augmentedLong = (double) ((augmentedLong-73)*100);
-                    double augmentedLat = Double.parseDouble(eElement.getElementsByTagName("Latitude").item(0).getTextContent());
-                    augmentedLat = (double) (100*(augmentedLat)-30);
-                    g[1]= augmentedLong;
-                    g[0] = augmentedLat;
-                    llArrayList.add(g);
-
-
-
-                //}
+                g[0] = dLat;
+                g[1] = dLong;
+                g[2] = 0.0;
+                g[3] = 0.0;
+                llArrayList.add(g);
 
             }
         }
-        return testArrayList;
+        return llArrayList;
     }
 
 
-  public void showNodeList(NodeList nodeList)
+    public void showNodeList(NodeList nodeList)
     {
         try
         {
@@ -154,7 +155,7 @@ public class XMLReader
                 if (child.getNodeType() == Node.ELEMENT_NODE)
                 {
                     Element eElement = (Element) child;
-
+                    System.out.println("SHOW ARRAYLIST");
                     System.out.println("Latitude : " + eElement.getElementsByTagName("Latitude").item(0).getTextContent());
                     System.out.println("Longitude : " + eElement.getElementsByTagName("Longitude").item(0).getTextContent());
                     System.out.println("City : " + eElement.getElementsByTagName("City").item(0).getTextContent());
@@ -198,11 +199,13 @@ public class XMLReader
 
     public void showArrayListDouble(ArrayList<Double[]> list)
     {
+        System.out.println("ARRAYLIST.SIZE " + list.size());
         for (int h = 0; h < list.size(); h++)
         {
+            System.out.println("SHOW ARRAYLIST DOUBLE");
 
-            System.out.println(list.get(h)[0].doubleValue());
-            System.out.println(list.get(h)[1].doubleValue());
+            System.out.println("(" + list.get(h)[0].doubleValue() + ", " +
+                    list.get(h)[1].doubleValue() + ")");
         }
     }
 

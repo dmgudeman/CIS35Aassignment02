@@ -37,8 +37,13 @@ public class Main
         String sfile = "/Users/davidgudeman/Documents/workspace/CIS35A_assignment02/src/Coordinates-1.xml";
         XMLReader xmlReader = new XMLReader(sfile);
         Document doc = xmlReader.ReadXML();
-        ArrayList<Double[]> aList= xmlReader.getArrayList(doc);
-        xmlReader.showArrayListDouble(aList);
+        NodeList nodeList = xmlReader.getNodes(doc);
+     //   xmlReader.showNodeList(nodeList);
+        ArrayList<Double[]> aList= xmlReader.getArrayList(nodeList);
+
+      //  xmlReader.showArrayListDouble(aList);
+
+        System.out.println("hoooooooooooooooooooooooooooPoints Left         ooo" + aList.size());
 
         Calculate calculate = new Calculate();
        // calculate.getDistance(nodeList, city1, city2);
@@ -51,7 +56,7 @@ public class Main
             {
                 JFrame frame = new NotHelloWorldFrame(aList);
                 frame.setTitle("Not Hello World");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+               frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
 
 
