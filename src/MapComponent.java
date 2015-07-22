@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 
 /**
@@ -20,7 +21,7 @@ public class MapComponent extends JComponent
 
     public void paintComponent(Graphics g)
     {
-        Graphics2D g2d = (Graphics2D) g;
+        Graphics2D g2d = (Graphics2D) g.create();
 
         int closestIndex = 0;
         int baseIndex = this.list.size()-1;
@@ -37,7 +38,17 @@ public class MapComponent extends JComponent
                 int ix2 = (int) ((this.list.get(closestIndex)[0] - 34.5) * 300);
                 int iy1 = (int) ((((this.list.get(baseIndex)[1])) + 107) * 400);
                 int iy2 = (int) (((this.list.get(closestIndex)[1]) + 107) * 400);
+
+             /*   int ix1 = (int) (this.list.get(baseIndex)[0]+0.0);
+                int ix2 = (int) (this.list.get(closestIndex)[0] + 0.0);
+                int iy1 = (int) (this.list.get(baseIndex)[1] + 0.0);
+                int iy2 = (int) (this.list.get(closestIndex)[1] + 0.0);
+                AffineTransform at = new AffineTransform();
+                at.translate(-34.5, 107);
+                at.scale(1.5,1.5);
+*/
                 g2d.drawLine(ix1, iy1, ix2, iy2);
+                g2d.dispose();
             }
             baseIndex = closestIndex;
         }

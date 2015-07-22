@@ -17,7 +17,7 @@ public class Main
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException
     {
 
-        ImagePanel panel = new ImagePanel();
+     //   ImagePanel panel = new ImagePanel();
 
 
 
@@ -36,8 +36,8 @@ public class Main
             public void run()
             {
                 JFrame frame = new MapFrame(aList);
-                ImagePanel panel = new ImagePanel();
-                frame.getContentPane().add(panel);
+              //  ImagePanel panel = new ImagePanel();
+          //      frame.getContentPane().add(panel);
                 frame.pack();
                 frame.setTitle("Map");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
