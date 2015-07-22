@@ -17,6 +17,14 @@ public class Main
     public static void main(String[] args) throws IOException, SAXException, ParserConfigurationException
     {
 
+        ImagePanel panel = new ImagePanel();
+
+
+
+
+
+
+
         String sfile = "/Users/davidgudeman/Documents/workspace/CIS35A_assignment02/src/Coordinates-1.xml";
         XMLReader xmlReader = new XMLReader(sfile);
         Document doc = xmlReader.readXML();
@@ -28,6 +36,9 @@ public class Main
             public void run()
             {
                 JFrame frame = new MapFrame(aList);
+                ImagePanel panel = new ImagePanel();
+                frame.getContentPane().add(panel);
+                frame.pack();
                 frame.setTitle("Map");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
