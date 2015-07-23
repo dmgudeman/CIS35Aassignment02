@@ -12,7 +12,7 @@ import java.util.ArrayList;
 /**
  * The input functions of the program. The readXML method takes a text xml
  * file and returns a document of nodes.
- * <p>
+ *
  * The GetNodes method makes the nodes available
  * Created by davidgudeman on 7/9/15.
  */
@@ -68,12 +68,15 @@ public class XMLReader
         return nList;
     }
 
-    // allow for retreval of the nodes
+    /**
+     * Takes in a nodelist and returns an arraylist of Double[] containing the coordinates of a point
+     * and a flag set to 0.0
+     * @param: nodeList
+     * @return: Arraylist of Double[]
+     */
     public ArrayList<Double[]> getArrayList(NodeList nodeList)
     {
         ArrayList<Double[]> llArrayList = new ArrayList<>();
-        ArrayList<Double[]> testArrayList = new ArrayList<>();
-
 
         for (int i = 0; i < nodeList.getLength(); i++)
         {

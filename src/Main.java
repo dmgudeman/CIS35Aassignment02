@@ -10,7 +10,8 @@ import java.lang.*;
 import java.util.ArrayList;
 
 /**
- * Created by davidgudeman on 7/17/15.
+ * CIS35A assignment02
+ * Created by David Gudeman on 7/17/15.
  */
 public class Main
 {

@@ -33,10 +33,10 @@ public class MapComponent extends JComponent
 
                 closestIndex = calc.getMinimumDistanceDouble(this.list, baseIndex);
                 this.list.get(closestIndex)[3] = 1.0;
-                int ix1 = (int) ((this.list.get(baseIndex)[0] - 34.5) * 300);
-                int ix2 = (int) ((this.list.get(closestIndex)[0] - 34.5) * 300);
-                int iy1 = (int) ((((this.list.get(baseIndex)[1])) + 107) * 400);
-                int iy2 = (int) (((this.list.get(closestIndex)[1]) + 107) * 400);
+                int ix1 = (int) ((this.list.get(baseIndex)[0] - 34.5) * 150);
+                int ix2 = (int) ((this.list.get(closestIndex)[0] - 34.5) * 150);
+                int iy1 = (int) ((((this.list.get(baseIndex)[1])) + 107) * 200);
+                int iy2 = (int) (((this.list.get(closestIndex)[1]) + 107) * 200);
                 g2d.drawLine(ix1, iy1, ix2, iy2);
             }
             baseIndex = closestIndex;

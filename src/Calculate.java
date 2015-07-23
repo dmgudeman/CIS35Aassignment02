@@ -6,10 +6,11 @@ import java.util.Arrays;
 import static java.lang.Math.*;
 
 /**
- * Class that performs has two methods to calculate the distance between
- * two point.  It takes a generic datatype. The haversine computation is
- * in its own method.
- * <p>
+ * Class that uses the haversine method to calculate distances.
+ * one method calculates distances. Another method returns the
+ * smallest distance of coordinates fed to it as an arraylist of
+ * double arrays.
+ *
  * Created by davidgudeman on 7/13/15.
  */
 
@@ -25,14 +26,13 @@ public class Calculate
      * uses the Haversine method to calculate the distance between two points given their
      * coordinates
      * <p>
-     * It takes in the coordinates as generics of the Gen class and returns the distance
-     * as a string.
+     * It takes in the coordinates as doubles and returns a distance as an int
      *
      * @param: double dlatitude1
      * @param: double  dlongitude1
      * @param: double dlatitude2
      * @param: double dlongitude2
-     * @return: String distance
+     * @return: int distance
      */
     private int haversine(double dlatitude1, double dlongitude1, double dlatitude2, double dlongitude2)
     {
@@ -56,6 +56,15 @@ public class Calculate
         return answer;
     }
 
+    /**
+     * Method takes in an arraylist of Double[]. The Double[] holds the x and y coordinates of a point
+     * and a flag that is originally set to 0. When it has been part of an identified minimum distance, the
+     * flag is set to 1.0 so that point is not used again.
+     *
+     * @param: arraylist of Double[]
+     * @param: int index this is the reference point to determine the minimum distance from
+     * @return: int index of the nearest point
+     */
     public int getMinimumDistanceDouble(ArrayList<Double[]> list, int index)
     {
 
@@ -67,20 +76,20 @@ public class Calculate
         yBase = list.get(index)[1];
         double minDistance = 10000000.0;
 
-        for (int i = 0; i < list.size() - 1; i++)
+        for (int i = 0; i < list.size() - 1; i++) // iterate through the arraylist
         {
             x2 = list.get(i)[0];
             y2 = list.get(i)[1];
-            if (list.get(i)[3] == 0.0)
+            if (list.get(i)[3] == 0.0) // ignore if flag is not zero
             {
                 distance = calc.getDistanceDouble(xBase, x2, yBase, y2);
-                if ((minDistance > distance && distance > 0))
+                if ((minDistance > distance && distance > 0)) // capture smallest disance
                 {
                     minDistance = distance;
                     idIndex = i;
                 }
             }
         }
-        return idIndex;
+        return idIndex; // return the index of the nearest point to the original value
     }
 }
